@@ -11,6 +11,8 @@ var Controller = require('./global_controller');
 //Creating a Model for the Player Table
 var Players = require('./models/player.model.js')(bookshelf);
 var Queue = require('./models/queue.model.js')(bookshelf);
+var World = require('./models/world.model.js')(bookshelf, Players);
+var PlayerTiles = require('./models/playerTiles.model.js')(bookshelf, Players);
 
 
 
@@ -21,7 +23,7 @@ server.use(bodyParser.json());
 //ROUTING INFORMATION:
 var port = 3000;
 //including routes
-var router = require('./routes')(express, Players, Queue, Controller);
+var router = require('./routes')(express, Players, World, Queue, PlayerTiles, Controller);
 server.use('/api', router);
 
 http.listen(port, function() {

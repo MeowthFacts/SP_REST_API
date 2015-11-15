@@ -1,8 +1,10 @@
-module.exports = function(express, Players, Queue, Controller) {
+module.exports = function(express, Players, World, Queue, PlayerTiles, Controller) {
     'use strict';
     var router = express.Router();
 
     router.use(function( req, res, next ) {
+      var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+      console.log("Request from IP: " + ip);
       //reserved for logs
       next();
     });
@@ -24,24 +26,29 @@ module.exports = function(express, Players, Queue, Controller) {
     //Get Player or Players:
 
     ///players/:player_id
-    require('./routes/players/getPlayer.route')(router, Players,  Error, Success, Controller);
+    require('./routes/players/getPlayer.route')(router, Players, World,  Error, Success, Controller);
     ///players
-    require('./routes/players/getPlayers.route')(router, Players,  Error, Success, Controller);
+    require('./routes/players/getPlayers.route')(router, Players, World,  Error, Success, Controller);
 
     /*
     When creating a player, you must add a player to the players table, add the player_id with default values to
     the player_stats table, create a tilemap instance for that player by adding them to the tilemap, randomly
     generate 7 tiles for them, +1 home, +1 randomly generated resouce, +1 random merchant
     */
-    require('./routes/players/createPlayer.route')(router, Players, Queue, Error, Success, Controller);
+    require('./routes/players/createPlayer.route')(router, Players, World, Queue, Error, Success, Controller);
     /*********************************************************************************************/
     //Player Stats
 
     //Map Manangement
+    require('./routes/world/getWorlds.route')(router, Players, World, Error, Success, Controller);
+    //Player tiles
+    require('./routes/world/playerTiles.route')(router, Players, World, PlayerTiles, Error, Success, Controller);
+
+
+
     //Coordinates with Maps
 
     //Queue
-    ///players/:player_id
     require('./routes/queue/getQueue.route')(router, Queue,  Error, Success, Controller);
 
 
