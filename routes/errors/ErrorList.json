@@ -1,0 +1,7 @@
+{
+"-1":"No player found with that player_id",
+"12":"Queue not initalized properly, could not map player. Player deleted.",
+"100":"Session create error",
+"111":"Session get error",
+"23505": "Non unquie field entered"
+}
