@@ -1,2 +1,3 @@
-[^.]*
+dbConfig.json
+dbConfigMaster.json
 node_modules

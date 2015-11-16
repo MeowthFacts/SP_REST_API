@@ -2,6 +2,7 @@ var express = require('express');
 var pg = require('pg');
 var server = module.exports = express();
 var http = require('http').Server(server);
+var path = require('path');
 var bodyParser = require('body-parser')
 var dbConfig = require('./config/dbConfig')
 var knex = require('knex')(dbConfig);
@@ -23,8 +24,11 @@ server.use(bodyParser.json());
 //ROUTING INFORMATION:
 var port = 3000;
 //including routes
-var router = require('./routes')(express, Players, World, Queue, PlayerTiles, Controller);
+var router = require('./routes')(express, knex, Players, World, Queue, PlayerTiles, Controller);
 server.use('/api', router);
+
+//enable the api docs to be browsed via address:3000/doc
+server.use('/doc', express.static(__dirname + '/doc'));
 
 http.listen(port, function() {
   console.log('API listening on *:' + port);

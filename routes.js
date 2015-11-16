@@ -1,4 +1,4 @@
-module.exports = function(express, Players, World, Queue, PlayerTiles, Controller) {
+module.exports = function(express, knex, Players, World, Queue, PlayerTiles, Controller) {
     'use strict';
     var router = express.Router();
 
@@ -35,7 +35,7 @@ module.exports = function(express, Players, World, Queue, PlayerTiles, Controlle
     the player_stats table, create a tilemap instance for that player by adding them to the tilemap, randomly
     generate 7 tiles for them, +1 home, +1 randomly generated resouce, +1 random merchant
     */
-    require('./routes/players/createPlayer.route')(router, Players, World, Queue, Error, Success, Controller);
+    require('./routes/players/createPlayer.route')(router, Players, World, Queue, PlayerTiles, Error, Success, Controller);
     /*********************************************************************************************/
     //Player Stats
 
@@ -50,6 +50,9 @@ module.exports = function(express, Players, World, Queue, PlayerTiles, Controlle
 
     //Queue
     require('./routes/queue/getQueue.route')(router, Queue,  Error, Success, Controller);
+
+    //Reset - Debugging Purposes
+    require('./routes/reset/reset.route')(router, knex, Players, World, PlayerTiles, Queue, Error, Success, Controller);
 
 
     return router;

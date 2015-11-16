@@ -3,6 +3,7 @@ module.exports = function(bookshelf)
 {
 	return bookshelf.Model.extend({
 		tableName:'map_queue',
-		idAttribute: 'queue'
+		idAttribute: 'queue',
+		"hasTimestamps":["modified"]
 	});
 };

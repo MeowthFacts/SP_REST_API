@@ -16,5 +16,9 @@
     "http": "0.0.0",
     "knex": "^0.8.6",
     "pg": "^4.4.3"
+  },
+  "apidoc": {
+    "title": "Senior Project API Doc Tool",
+    "url" : "localhost:3000"
   }
 }
