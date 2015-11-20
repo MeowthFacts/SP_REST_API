@@ -6,10 +6,12 @@ module.exports = function(ErrorCode)
 	var obj = JSON.parse(data);
 
 	if(typeof ErrorCode == 'object') {
-		console.error(ErrorCode);
 		var code = ErrorCode.code;
-		console.log("true");
-		var json = {error_code:code, info:obj[code] + ": " + ErrorCode.detail, success:false};
+		if(obj[code] === undefined) {
+			console.log("error code unknown");
+			console.log(ErrorCode);
+		 }
+		var json = {error_code:code, info:obj[code] + ": " + (ErrorCode.detail || "unknown"), success:false};
 	}else {
 		var json = {error_code:ErrorCode,info:obj[ErrorCode],success:false};
 	}

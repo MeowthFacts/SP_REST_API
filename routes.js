@@ -6,6 +6,11 @@ module.exports = function(express, knex, Players, World, Queue, PlayerTiles, Con
       var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
       console.log("Request from IP: " + ip);
       //reserved for logs
+
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "X-Requested-With");
+      res.header("Access-Control-Allow-Headers", "Content-Type");
+      res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
       next();
     });
 

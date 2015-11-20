@@ -3,5 +3,6 @@
 "12":"Queue not initalized properly, could not map player. Player deleted.",
 "100":"Session create error",
 "111":"Session get error",
-"23505": "Non unquie field entered"
+"23505": "Non unquie field entered",
+"22P02": "Invalid Input to Field"
 }
