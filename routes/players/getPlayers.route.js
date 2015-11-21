@@ -16,10 +16,14 @@ module.exports = function(router, Players, World, Error, Success, Controller)
 	*     [{
 	*        "player_id" :"PL0000000",
 	*        "email_id"  :"NPC0@gmail.com"
+	*        "username"  :"NPC0",
+	*        "role"      :"1",
 	*       },
 	*				{
 	*        "player_id" :"PL0000001",
 	*        "email_id"  :"NPC1@gmail.com"
+	*        "username"  :"NPC1",
+	*        "role"      :"1",
 	*        },...]
 	*
 	* @apiError PlayerNotFound Players were not found.
@@ -67,16 +71,20 @@ module.exports = function(router, Players, World, Error, Success, Controller)
 		*     [{
 		*        "player_id" :"PL0000000",
 		*        "email_id"  :"NPC0@gmail.com"
+		*        "username"  :"NPC0",
+		*        "role"      :"1",
 		*     	 "world": {
 		*           "player_id": 1,
 		*           "x":0,
 		*            "y":0
 		*        }},
 		*				{
-		*        "player_id" :"PL0000000",
-		*        "email_id"  :"NPC0@gmail.com"
+		*        "player_id" :"PL0000001",
+		*        "email_id"  :"NPC1@gmail.com"
+		*        "username"  :"NPC1",
+		*        "role"      :"1",
 		*     	 "world": {
-		*           "player_id": 1,
+		*           "player_id": 2,
 		*           "x":1,
 		*           "y":0
 		*        }}...]
@@ -128,6 +136,8 @@ module.exports = function(router, Players, World, Error, Success, Controller)
 		  *     [{
 		  *        "player_id" :"PL0000001",
 		  *        "email_id"  :"NPC1@gmail.com",
+			*        "username"  :"NPC1",
+			*        "role"      :"1",
 		  *        "tiles": [{
 		  *           "player_id": 1,
 		  *           "tile_id": 2005,
@@ -199,6 +209,8 @@ module.exports = function(router, Players, World, Error, Success, Controller)
   *     [{
   *        "player_id" :"PL0000001",
   *        "email_id"  :"NPC1@gmail.com",
+	*        "username"  :"NPC1",
+	*        "role"      :"1",
   *        "world": {
   *           "player_id": 1,
   *           "x":0,

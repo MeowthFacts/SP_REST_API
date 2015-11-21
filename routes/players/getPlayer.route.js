@@ -16,6 +16,8 @@ module.exports = function(router, Players, World, Error, Success, Controller)
  *     {
  *        "player_id" :"PL0000001",
  *        "email_id"  :"NPC1@gmail.com",
+ *        "username"  :"NPC1",
+ *        "role"      :"1",
  *        "success"   :true
  *     }
  *

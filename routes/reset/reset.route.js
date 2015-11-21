@@ -30,8 +30,8 @@ module.exports = function(router, knex, Players, World, PlayerTiles, Queue, Erro
               //CREATING THE INITIAL PLAYER ONE AND PLAYER TWO
               knex('players').insert(
                 [
-                {player_id: 0, email_id: "NPC0@gmail.com"},
-                {player_id: 1, email_id: "NPC1@gmail.com"}
+                {player_id: 0, email_id: "NPC0@gmail.com", username: "NPC0", role: 1},
+                {player_id: 1, email_id: "NPC1@gmail.com", username: "NPC1", role: 1}
                 ]
               ).then(function(result) {
               //PULLING BACK BOTH OF THEIR TILES AND GENERATING THE TILES

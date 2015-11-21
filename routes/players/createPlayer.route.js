@@ -21,6 +21,8 @@ module.exports = function(router, Players, World, Queue, PlayerTiles, Error, Suc
   *     {
   *        "player_id" :"PL0000001",
   *        "email_id"  :"NPC1@gmail.com",
+  *        "username"  :"NPC1",
+  *        "role"      :"1",
   *        "world": {
   *           "player_id": 1,
   *           "x":0,
@@ -72,8 +74,14 @@ module.exports = function(router, Players, World, Queue, PlayerTiles, Error, Suc
     			res.json({missing_parameter:"email",success:false});
     			return;
     		}
+        if(req.body.username === undefined) {
+          console.log("Username UNDEFINED");
+          res.json({missing_parameter:"username",success:false});
+          return;
+        }
     		var data = ({
-          "email_id":req.body.email
+          "email_id":req.body.email,
+          "username":req.body.username
     		});
     		new Players().save(data,{method:"insert"}).then(function(result) {
     			var player_created = result.toJSON();
